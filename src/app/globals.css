@@ -1,26 +1,167 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.5rem;
+  /* Dofus theme - couleurs inspirées du jeu */
+  --background: oklch(0.95 0.02 45); /* Beige parchemin clair */
+  --foreground: oklch(0.25 0.04 35); /* Brun foncé */
+  --card: oklch(0.98 0.015 50); /* Blanc cassé doré */
+  --card-foreground: oklch(0.25 0.04 35);
+  --popover: oklch(0.98 0.015 50);
+  --popover-foreground: oklch(0.25 0.04 35);
+  --primary: oklch(0.65 0.15 45); /* Or Dofus */
+  --primary-foreground: oklch(0.15 0.04 35);
+  --secondary: oklch(0.85 0.03 40); /* Beige doré */
+  --secondary-foreground: oklch(0.3 0.04 35);
+  --muted: oklch(0.9 0.02 45);
+  --muted-foreground: oklch(0.5 0.03 35);
+  --accent: oklch(0.7 0.12 50); /* Accent doré */
+  --accent-foreground: oklch(0.2 0.04 35);
+  --destructive: oklch(0.6 0.2 15); /* Rouge brique */
+  --border: oklch(0.8 0.04 40); /* Bordure dorée claire */
+  --input: oklch(0.92 0.02 45);
+  --ring: oklch(0.65 0.15 45);
+  --chart-1: oklch(0.65 0.15 45);
+  --chart-2: oklch(0.55 0.12 60);
+  --chart-3: oklch(0.45 0.1 80);
+  --chart-4: oklch(0.7 0.18 30);
+  --chart-5: oklch(0.6 0.14 100);
+  --sidebar: oklch(0.92 0.025 45);
+  --sidebar-foreground: oklch(0.25 0.04 35);
+  --sidebar-primary: oklch(0.65 0.15 45);
+  --sidebar-primary-foreground: oklch(0.15 0.04 35);
+  --sidebar-accent: oklch(0.85 0.03 40);
+  --sidebar-accent-foreground: oklch(0.3 0.04 35);
+  --sidebar-border: oklch(0.8 0.04 40);
+  --sidebar-ring: oklch(0.65 0.15 45);
+}
+
+.dark {
+  /* Dofus theme sombre - tons plus sombres mais gardant l'esprit doré */
+  --background: oklch(0.15 0.03 35); /* Brun très sombre */
+  --foreground: oklch(0.9 0.02 50); /* Beige clair */
+  --card: oklch(0.2 0.04 40); /* Brun sombre */
+  --card-foreground: oklch(0.9 0.02 50);
+  --popover: oklch(0.2 0.04 40);
+  --popover-foreground: oklch(0.9 0.02 50);
+  --primary: oklch(0.75 0.18 50); /* Or plus vif en mode sombre */
+  --primary-foreground: oklch(0.1 0.04 35);
+  --secondary: oklch(0.3 0.05 40); /* Brun moyen */
+  --secondary-foreground: oklch(0.85 0.02 50);
+  --muted: oklch(0.25 0.04 40);
+  --muted-foreground: oklch(0.65 0.03 45);
+  --accent: oklch(0.8 0.15 55); /* Accent doré vif */
+  --accent-foreground: oklch(0.1 0.04 35);
+  --destructive: oklch(0.65 0.25 20); /* Rouge plus vif */
+  --border: oklch(0.4 0.06 40); /* Bordure dorée sombre */
+  --input: oklch(0.18 0.04 40);
+  --ring: oklch(0.75 0.18 50);
+  --chart-1: oklch(0.75 0.18 50);
+  --chart-2: oklch(0.65 0.15 65);
+  --chart-3: oklch(0.55 0.12 85);
+  --chart-4: oklch(0.8 0.2 35);
+  --chart-5: oklch(0.7 0.16 105);
+  --sidebar: oklch(0.18 0.04 40);
+  --sidebar-foreground: oklch(0.9 0.02 50);
+  --sidebar-primary: oklch(0.75 0.18 50);
+  --sidebar-primary-foreground: oklch(0.1 0.04 35);
+  --sidebar-accent: oklch(0.3 0.05 40);
+  --sidebar-accent-foreground: oklch(0.85 0.02 50);
+  --sidebar-border: oklch(0.4 0.06 40);
+  --sidebar-ring: oklch(0.75 0.18 50);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 20% 50%, oklch(0.97 0.02 50 / 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, oklch(0.97 0.02 45 / 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, oklch(0.97 0.02 55 / 0.2) 0%, transparent 50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Styles Dofus personnalisés */
+@layer components {
+  .dofus-card {
+    @apply bg-card border-2 border-border rounded-lg shadow-lg;
+    box-shadow: 
+      0 4px 6px -1px oklch(0.5 0.1 40 / 0.1),
+      0 2px 4px -1px oklch(0.5 0.1 40 / 0.06),
+      inset 0 1px 0 oklch(0.9 0.02 50 / 0.1);
+  }
+  
+  .dofus-button {
+    @apply bg-primary text-primary-foreground font-semibold rounded-md transition-all;
+    box-shadow: 
+      0 2px 4px oklch(0.4 0.1 40 / 0.2),
+      inset 0 1px 0 oklch(0.8 0.1 50 / 0.2);
+  }
+  
+  .dofus-button:hover {
+    @apply brightness-110;
+    box-shadow: 
+      0 4px 8px oklch(0.4 0.1 40 / 0.3),
+      inset 0 1px 0 oklch(0.8 0.1 50 / 0.3);
+  }
+  
+  .dofus-input {
+    @apply bg-input border-2 border-border rounded-md;
+    box-shadow: 
+      inset 0 2px 4px oklch(0.4 0.1 40 / 0.1),
+      0 1px 2px oklch(0.4 0.1 40 / 0.05);
+  }
+  
+  .dofus-input:focus {
+    @apply ring-2 ring-ring border-primary;
+    box-shadow: 
+      inset 0 2px 4px oklch(0.4 0.1 40 / 0.1),
+      0 0 0 2px oklch(0.65 0.15 45 / 0.2);
+  }
 }
