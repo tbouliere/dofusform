@@ -12,22 +12,22 @@ const sampleQuestions: Question[] = [
   {
     id: '1',
     type: 'radio',
-    title: 'Quelle est votre classe préférée ?',
+    title: 'Quelle est votre classe ?',
     required: true,
     options: ['Iop', 'Cra', 'Eniripsa', 'Ecaflip', 'Osamodas', 'Sram', 'Xelor', 'Sacrieur', 'Sadida', 'Pandawa', 'Roublard', 'Zobal', 'Steamer', 'Féca', 'Enutrof', 'Huppermage', 'Ouginak', 'Forgelance']
   },
   {
     id: '2',
+    type: 'rating',
+    title: 'Notez votre expérience de jeu en pvp (1-10)',
+    required: true
+  },
+    {
+    id: '3',
     type: 'text',
-    title: 'Commentaires additionnels',
+    title: 'Voulez vous exclure des duo de classes ? Si oui lequels ?',
     required: false
   },
-  {
-    id: '3',
-    type: 'rating',
-    title: 'Notez votre expérience de jeu (1-10)',
-    required: true
-  }
 ]
 
 export function QuestionnaireForm() {
@@ -72,7 +72,7 @@ export function QuestionnaireForm() {
     
     if (!validateForm()) return
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     
     const questionnaireResponse: QuestionnaireResponse = {
       pseudo: pseudo.trim(),

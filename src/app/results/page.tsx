@@ -112,23 +112,26 @@ export default function ResultsPage() {
                       <span className="ml-2">{formatResponse(response.responses['1'])}</span>
                     </div>
                     
-                    <div>
-                      <span className="font-medium text-gray-700">Commentaires:</span>
-                      <span className="ml-2">{formatResponse(response.responses['2'])}</span>
-                    </div>
+                 
                     
                     <div>
                       <span className="font-medium text-gray-700">Note d'expérience:</span>
                       <span className="ml-2 inline-flex items-center">
-                        {formatResponse(response.responses['3'])}/10
-                        {response.responses['3'] && (
+                        {formatResponse(response.responses['2'])}/10
+                        {response.responses['2'] && (
                           <span className="ml-2 text-yellow-500">
-                            {'★'.repeat(Math.min(Number(response.responses['3']), 10))}
+                            {'★'.repeat(Math.min(Number(response.responses['2']), 10))}
                           </span>
                         )}
                       </span>
                     </div>
+
+                       <div>
+                      <span className="font-medium text-gray-700">Commentaires:</span>
+                      <span className="ml-2">{formatResponse(response.responses['3'])}</span>
+                    </div>
                   </div>
+
                 </div>
               ))}
             </div>

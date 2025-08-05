@@ -5,6 +5,7 @@ import { QuestionnaireResponse } from '@/types/questionnaire'
 export async function POST(request: NextRequest) {
   try {
     const body: QuestionnaireResponse = await request.json()
+
     
     if (!body.pseudo || !body.responses || !body.timestamp) {
       return NextResponse.json(
@@ -40,17 +41,19 @@ export async function GET() {
   try {
     const responseIds = await redis.smembers('questionnaire:responses')
     
-    const responses = await Promise.all(
+    const responses = (await Promise.all(
       responseIds.map(async (id) => {
         const data = await redis.hgetall(id)
+        if (!data)
+          return
         return {
           id,
           pseudo: data.pseudo,
-          responses: JSON.parse(data.responses as string),
+          responses: data.responses,
           timestamp: data.timestamp
-        }
+        } as QuestionnaireResponse
       })
-    )
+    )).filter((data) => !!data)
 
     responses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
 
