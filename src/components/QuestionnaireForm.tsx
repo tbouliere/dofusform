@@ -97,7 +97,7 @@ export function QuestionnaireForm() {
       } else {
         throw new Error('Erreur lors de la soumission')
       }
-    } catch (error) {
+    } catch (_error) {
       alert('Erreur lors de la soumission du questionnaire')
     } finally {
       setIsSubmitting(false)

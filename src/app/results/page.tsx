@@ -115,7 +115,7 @@ export default function ResultsPage() {
                  
                     
                     <div>
-                      <span className="font-medium text-gray-700">Note d'expérience:</span>
+                      <span className="font-medium text-gray-700">Note d&apos;expérience:</span>
                       <span className="ml-2 inline-flex items-center">
                         {formatResponse(response.responses['2'])}/10
                         {response.responses['2'] && (
