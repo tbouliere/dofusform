@@ -14,7 +14,7 @@ const sampleQuestions: Question[] = [
     type: 'radio',
     title: 'Quelle est votre classe ?',
     required: true,
-    options: ['Iop', 'Cra', 'Eniripsa', 'Ecaflip', 'Osamodas', 'Sram', 'Xelor', 'Sacrieur', 'Sadida', 'Pandawa', 'Roublard', 'Zobal', 'Steamer', 'Féca', 'Enutrof', 'Huppermage', 'Ouginak', 'Forgelance']
+    options: ['Iop', 'Cra', 'Eniripsa', 'Ecaflip', 'Osamodas', 'Sram', 'Xelor', 'Sacrieur', 'Sadida', 'Pandawa', 'Roublard', 'Zobal', 'Steamer', 'Féca', 'Enutrof', 'Huppermage', 'Ouginak','Eliotrope', 'Forgelance']
   },
   {
     id: '2',
